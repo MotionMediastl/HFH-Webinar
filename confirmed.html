@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0A0A">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>You're Registered | Heart Faith Hustle</title>
+<style>
+  :root {
+    --hfh-red: #C8102E;
+    --hfh-red-dark: #8B0000;
+    --hfh-red-deep: #5C0000;
+    --hfh-black: #0A0A0A;
+    --hfh-charcoal: #1A1A1A;
+    --hfh-gray-line: #E5E5E5;
+    --hfh-gray-bg: #F5F5F5;
+    --hfh-gray-text: #4A4A4A;
+    --hfh-off-white: #FAFAFA;
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    color: var(--hfh-black);
+    font-size: 16px;
+    line-height: 1.55;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+    padding-bottom: var(--safe-bottom);
+  }
+  img { max-width: 100%; height: auto; display: block; }
+  button, a { font-family: inherit; }
+
+  /* Header */
+  .site-header {
+    background: var(--hfh-black);
+    padding: 12px 16px;
+    padding-top: calc(12px + var(--safe-top));
+    border-bottom: 3px solid var(--hfh-red);
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .logo-img {
+    height: 44px; width: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--hfh-red);
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .brand-text {
+    color: #fff; font-weight: 800; font-size: 15px;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  .brand-text span { color: var(--hfh-red); }
+
+  /* Hero */
+  .hero {
+    padding: 40px 20px 36px;
+    background: var(--hfh-off-white);
+    text-align: center;
+  }
+  .check-circle {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: var(--hfh-red);
+    margin: 0 auto 20px;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 6px 18px rgba(200, 16, 46, 0.3);
+  }
+  .check-circle::after {
+    content: '';
+    width: 28px; height: 14px;
+    border-left: 5px solid #fff;
+    border-bottom: 5px solid #fff;
+    transform: rotate(-45deg);
+    margin-top: -8px;
+  }
+  .hero h1 {
+    font-size: 30px; font-weight: 900;
+    line-height: 1.15; letter-spacing: -0.5px;
+    margin-bottom: 14px;
+  }
+  .hero h1 .red { color: var(--hfh-red); }
+  .hero p.sub {
+    font-size: 16px; color: var(--hfh-gray-text);
+    max-width: 620px; margin: 0 auto;
+  }
+
+  /* Event card */
+  .event-card {
+    margin: 0 16px 32px;
+    background: var(--hfh-black);
+    color: #fff;
+    border-radius: 10px;
+    padding: 28px 22px;
+    text-align: center;
+    border-top: 4px solid var(--hfh-red);
+  }
+  .event-eyebrow {
+    color: var(--hfh-red);
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .event-day {
+    font-size: 24px; font-weight: 900;
+    line-height: 1.2; margin-bottom: 6px;
+  }
+  .event-time {
+    font-size: 17px; color: #DDD;
+    margin-bottom: 20px;
+  }
+  .event-tz { font-size: 13px; color: #999; }
+
+  /* Calendar buttons */
+  .cal-buttons {
+    display: flex; flex-direction: column;
+    gap: 10px; max-width: 360px;
+    margin: 24px auto 0;
+  }
+  .cal-btn {
+    background: #fff; color: var(--hfh-black);
+    padding: 14px 18px;
+    border-radius: 6px;
+    font-weight: 700; font-size: 15px;
+    text-decoration: none;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    border: none;
+    cursor: pointer;
+    min-height: 52px;
+    transition: background 0.15s;
+  }
+  .cal-btn:active { background: #EEE; }
+  .cal-btn .icon { font-size: 16px; }
+
+  /* Video section */
+  .video-section {
+    padding: 40px 16px;
+    background: var(--hfh-charcoal);
+  }
+  .video-section h2 {
+    color: #fff; font-size: 22px; font-weight: 800;
+    text-align: center; margin-bottom: 10px;
+  }
+  .video-section p.sub {
+    color: #BBB; font-size: 14px;
+    text-align: center; margin-bottom: 22px;
+    max-width: 500px; margin-left: auto; margin-right: auto;
+  }
+  .video-frame {
+    max-width: 720px; margin: 0 auto;
+    position: relative;
+    padding-bottom: 56.25%;
+    background: #000;
+    border: 2px solid var(--hfh-red);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .video-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    color: #999; padding: 16px; text-align: center;
+  }
+  .play-icon {
+    width: 64px; height: 64px;
+    border-radius: 50%; background: var(--hfh-red);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 12px;
+  }
+  .play-icon::after {
+    content: '';
+    width: 0; height: 0;
+    border-style: solid;
+    border-width: 11px 0 11px 18px;
+    border-color: transparent transparent transparent #fff;
+    margin-left: 5px;
+  }
+
+  /* What to expect */
+  .expect {
+    padding: 40px 20px;
+    background: #fff;
+  }
+  .expect-inner { max-width: 720px; margin: 0 auto; }
+  .expect h2 {
+    font-size: 24px; font-weight: 900;
+    text-align: center; margin-bottom: 28px;
+  }
+  .expect h2 .red { color: var(--hfh-red); }
+  .expect-item {
+    display: flex; gap: 16px;
+    margin-bottom: 22px;
+    padding: 18px;
+    background: var(--hfh-gray-bg);
+    border-left: 4px solid var(--hfh-red);
+    border-radius: 6px;
+  }
+  .expect-num {
+    flex-shrink: 0;
+    width: 36px; height: 36px;
+    background: var(--hfh-black);
+    color: var(--hfh-red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 900; font-size: 16px;
+  }
+  .expect-body h3 {
+    font-size: 16px; font-weight: 800;
+    margin-bottom: 4px; line-height: 1.3;
+  }
+  .expect-body p {
+    color: var(--hfh-gray-text);
+    font-size: 14px; line-height: 1.55;
+  }
+
+  /* Reminder banner */
+  .reminder {
+    background: #FFF5F5;
+    border-top: 1px solid #FBD9DE;
+    border-bottom: 1px solid #FBD9DE;
+    padding: 22px 20px;
+    text-align: center;
+    color: var(--hfh-black);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+  .reminder strong { color: var(--hfh-red); }
+
+  /* Footer */
+  .site-footer {
+    background: var(--hfh-black);
+    color: #BBB;
+    padding: 32px 20px 24px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 1.55;
+  }
+  .site-footer a { color: #BBB; text-decoration: none; margin: 0 8px; }
+  .footer-copy { margin-top: 14px; color: #666; font-size: 11.5px; }
+
+  /* Tablet up */
+  @media (min-width: 600px) {
+    .hero { padding: 56px 32px 48px; }
+    .hero h1 { font-size: 38px; }
+    .event-card { margin: 0 auto 40px; max-width: 560px; padding: 36px 28px; }
+    .event-day { font-size: 30px; }
+    .event-time { font-size: 20px; }
+    .cal-buttons { flex-direction: row; max-width: 480px; }
+    .cal-btn { flex: 1; }
+    .expect h2 { font-size: 28px; }
+    .video-section { padding: 56px 24px; }
+    .video-section h2 { font-size: 26px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <img class="logo-img" src="logo.png" alt="Heart Faith Hustle">
+    <div class="brand-text">Heart <span>Faith</span> Hustle</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="check-circle"></div>
+  <h1>You're <span class="red">In</span>.</h1>
+  <p class="sub">Your seat for the live group call is reserved. Here is exactly what happens next.</p>
+</section>
+
+<div class="event-card">
+  <div class="event-eyebrow">Your Live Call</div>
+  <div class="event-day" id="event-day">Loading...</div>
+  <div class="event-time">6:00 PM Eastern</div>
+  <div class="event-tz">3:00 PM PT / 4:00 PM MT / 5:00 PM CT</div>
+
+  <div class="cal-buttons">
+    <a href="#" id="cal-google" class="cal-btn" target="_blank" rel="noopener">
+      <span class="icon">📅</span> Add to Google
+    </a>
+    <a href="#" id="cal-apple" class="cal-btn" download="hfh-webinar.ics">
+      <span class="icon">📅</span> Add to Apple
+    </a>
+    <a href="#" id="cal-outlook" class="cal-btn" target="_blank" rel="noopener">
+      <span class="icon">📅</span> Add to Outlook
+    </a>
+  </div>
+</div>
+
+<section class="video-section">
+  <h2>A Quick Word From Your Host</h2>
+  <p class="sub">60 seconds. Worth watching before Wednesday so you know what to expect.</p>
+  <div class="video-frame">
+    <div class="video-placeholder">
+      <div class="play-icon"></div>
+      <div>Replace with host welcome video<br>(record on phone, upload to Vimeo or YouTube)</div>
+    </div>
+  </div>
+</section>
+
+<section class="expect">
+  <div class="expect-inner">
+    <h2>What to <span class="red">Expect</span></h2>
+
+    <div class="expect-item">
+      <div class="expect-num">1</div>
+      <div class="expect-body">
+        <h3>Watch your phone and email</h3>
+        <p>We'll send the Zoom link 1 hour before the call and again 15 minutes before. The 15-minute text is the one most people need.</p>
+      </div>
+    </div>
+
+    <div class="expect-item">
+      <div class="expect-num">2</div>
+      <div class="expect-body">
+        <h3>Bring a notebook and your questions</h3>
+        <p>The Q&amp;A at the end is the most valuable part. People who come with specific questions get specific answers.</p>
+      </div>
+    </div>
+
+    <div class="expect-item">
+      <div class="expect-num">3</div>
+      <div class="expect-body">
+        <h3>Show up on time</h3>
+        <p>We start at 6:00 PM Eastern sharp. The first 5 minutes are the framing for everything that follows. If you can join 2 minutes early, do.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="reminder">
+  <strong>Can't make it live?</strong> We run this call every Wednesday. You can join the next one with the same link. We don't send recordings.
+</div>
+
+<footer class="site-footer">
+  <div>
+    <a href="#">Privacy Policy</a> |
+    <a href="#">Terms of Service</a> |
+    <a href="mailto:[YOUR EMAIL]">Contact</a>
+  </div>
+  <div class="footer-copy">
+    &copy; 2026 Heart Faith Hustle. Licensed in all 50 states.
+  </div>
+</footer>
+
+<script>
+  // Auto-calculate next Wednesday at 6 PM Eastern
+  function getNextWednesday() {
+    const now = new Date();
+    // Get current date in Eastern Time
+    const eastern = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+    const day = eastern.getDay(); // 0=Sun, 3=Wed
+    let daysUntilWed = (3 - day + 7) % 7;
+    // If today is Wed and it's already past 6 PM ET, push to next week
+    if (daysUntilWed === 0 && eastern.getHours() >= 18) {
+      daysUntilWed = 7;
+    }
+    const next = new Date(eastern);
+    next.setDate(eastern.getDate() + daysUntilWed);
+    next.setHours(18, 0, 0, 0); // 6 PM ET
+    return next;
+  }
+
+  const nextWed = getNextWednesday();
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  document.getElementById('event-day').textContent =
+    `${days[nextWed.getDay()]}, ${months[nextWed.getMonth()]} ${nextWed.getDate()}`;
+
+  // Calendar link helpers
+  // Webinar is 1 hour long
+  function pad(n) { return n.toString().padStart(2, '0'); }
+  function formatGCal(d) {
+    // YYYYMMDDTHHMMSSZ in UTC
+    return d.getUTCFullYear() + pad(d.getUTCMonth()+1) + pad(d.getUTCDate()) + 'T' +
+           pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + '00Z';
+  }
+  const startUTC = new Date(nextWed.getTime());
+  const endUTC = new Date(nextWed.getTime() + 60 * 60 * 1000);
+
+  const title = encodeURIComponent('Heart Faith Hustle Career Walkthrough');
+  const details = encodeURIComponent('Live group call about a career in life insurance with Heart Faith Hustle. Zoom link will be texted and emailed 1 hour before the call.');
+  const location = encodeURIComponent('Zoom (link sent before call)');
+
+  // Google Calendar
+  document.getElementById('cal-google').href =
+    `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatGCal(startUTC)}/${formatGCal(endUTC)}&details=${details}&location=${location}`;
+
+  // Outlook
+  const isoStart = startUTC.toISOString();
+  const isoEnd = endUTC.toISOString();
+  document.getElementById('cal-outlook').href =
+    `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&body=${details}&startdt=${isoStart}&enddt=${isoEnd}&location=${location}&path=/calendar/action/compose&rru=addevent`;
+
+  // Apple (.ics file)
+  const icsContent = [
+    'BEGIN:VCALENDAR',
+    'VERSION:2.0',
+    'PRODID:-//Heart Faith Hustle//Webinar//EN',
+    'BEGIN:VEVENT',
+    `UID:${Date.now()}@heartfaithhustle`,
+    `DTSTAMP:${formatGCal(new Date())}`,
+    `DTSTART:${formatGCal(startUTC)}`,
+    `DTEND:${formatGCal(endUTC)}`,
+    'SUMMARY:Heart Faith Hustle Career Walkthrough',
+    'DESCRIPTION:Live group call about a career in life insurance. Zoom link sent before the call.',
+    'LOCATION:Zoom (link sent before call)',
+    'END:VEVENT',
+    'END:VCALENDAR'
+  ].join('\r\n');
+  const icsBlob = new Blob([icsContent], { type: 'text/calendar' });
+  document.getElementById('cal-apple').href = URL.createObjectURL(icsBlob);
+</script>
+
+</body>
+</html>
